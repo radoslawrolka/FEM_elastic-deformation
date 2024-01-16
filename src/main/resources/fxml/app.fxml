@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.image.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="FEM.gui.App" alignment="center" minWidth="750" minHeight="650">
+    <HBox>
+        <ImageView>
+            <Image url="@/img/task.png"/>
+        </ImageView>
+
+        <LineChart GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <xAxis>
+                <NumberAxis side="BOTTOM" label="x"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis side="LEFT" label="y"/>
+            </yAxis>
+        </LineChart>
+    </HBox>
+    <HBox alignment="CENTER">
+        <Label text="Insert n: "/>
+        <TextField fx:id="input" prefWidth="50"/>
+        <Button text="Calculate" onAction="#calculate"/>
+    </HBox>
+</VBox>
