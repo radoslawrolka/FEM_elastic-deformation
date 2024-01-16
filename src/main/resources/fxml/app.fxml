@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.chart.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="FEM.gui.App" alignment="center" minWidth="750" minHeight="650">
-    <HBox>
-        <ImageView>
-            <Image url="@/img/task.png"/>
-        </ImageView>
-
-        <LineChart GridPane.columnIndex="1" GridPane.rowIndex="0">
-            <xAxis>
-                <NumberAxis side="BOTTOM" label="x"/>
-            </xAxis>
-            <yAxis>
-                <NumberAxis side="LEFT" label="y"/>
-            </yAxis>
-        </LineChart>
-    </HBox>
-    <HBox alignment="CENTER">
-        <Label text="Insert n: "/>
-        <TextField fx:id="input" prefWidth="50"/>
-        <Button text="Calculate" onAction="#calculate"/>
-    </HBox>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="FEM.gui.Presenter" alignment="CENTER" minWidth="750" minHeight="650">
+    <LineChart fx:id="chart" animated="false" legendVisible="false" GridPane.columnIndex="1" GridPane.rowIndex="0">
+        <xAxis>
+            <NumberAxis autoRanging="false" label="x" lowerBound="-0.2" side="BOTTOM" tickUnit="0.2" upperBound="2.2" />
+        </xAxis>
+        <yAxis>
+            <NumberAxis autoRanging="false" label="u(x)" lowerBound="-2.0" side="LEFT" tickUnit="2.0" upperBound="30.0" />
+        </yAxis>
+    </LineChart>
+    <Label text="Choose number of points: "/>
+    <Spinner fx:id="input" editable="true" prefHeight="30">
+        <valueFactory>
+            <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" max="100" min="2" />
+        </valueFactory>
+    </Spinner>
 </VBox>
