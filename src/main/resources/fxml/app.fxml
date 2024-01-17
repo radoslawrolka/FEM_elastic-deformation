@@ -10,7 +10,7 @@
             <NumberAxis autoRanging="false" label="x" lowerBound="-0.2" side="BOTTOM" tickUnit="0.2" upperBound="2.2" />
         </xAxis>
         <yAxis>
-            <NumberAxis autoRanging="false" label="u(x)" lowerBound="-2.0" side="LEFT" tickUnit="2.0" upperBound="60.0" />
+            <NumberAxis autoRanging="false" label="u(x)" lowerBound="-2.0" side="LEFT" tickUnit="2.0" upperBound="32.0" />
         </yAxis>
     </LineChart>
     <Label text="Choose number of points: "/>

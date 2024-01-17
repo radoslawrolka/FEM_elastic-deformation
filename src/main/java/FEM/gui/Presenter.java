@@ -21,7 +21,7 @@ public class Presenter implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         this.input.getValueFactory().valueProperty().addListener(value -> this.calculate());
         XYChart.Series<Number, Number> exactSolution = new XYChart.Series<>();
-        exactSolution.getData().add(new XYChart.Data<>(0d, 43d));//80d / 3d));
+        exactSolution.getData().add(new XYChart.Data<>(0d, 31d));
         exactSolution.getData().add(new XYChart.Data<>(1d, 10d));
         exactSolution.getData().add(new XYChart.Data<>(2d, 3d));
         this.chart.getData().add(0, exactSolution);
