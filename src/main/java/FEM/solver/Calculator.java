@@ -21,8 +21,9 @@ public class Calculator {
         RealVector vectorL = buildVector(N, intervalLength);
         RealVector coefficients = solveEquation(matrixB, vectorL, N);
         double[] results = Arrays.copyOf(coefficients.toArray(), N + 1);
-
-        results[N] = 3;
+        for (int i = 0; i <= N; i++) {
+            results[i] += 3;
+        }
         return new Result(0, 2.0, results);
     }
 
@@ -54,7 +55,7 @@ public class Calculator {
 
     private RealVector buildVector(int N, double intervalLength) {
         RealVector vectorL = new ArrayRealVector(N, 0);
-        vectorL.setEntry(0, -10 * E(0) * shapeFunction(N, intervalLength, 0, 0));
+        vectorL.setEntry(0, -7 * E(0) * shapeFunction(N, intervalLength, 0, 0));
         return vectorL;
     }
 
