@@ -19,7 +19,7 @@ public class Calculator2 {
         double intervalLength = 2.0;
         RealMatrix matrixB = buildMatrix(N, intervalLength);
         RealVector vectorL = buildVector(N, intervalLength);
-        RealVector coefficients = solveEquation(matrixB, vectorL, N);
+        RealVector coefficients = solveEquation(matrixB, vectorL);
         double[] results = Arrays.copyOf(coefficients.toArray(), N + 1);
         for (int i = 0; i <= N; i++) {
             results[i] += 3;
@@ -70,7 +70,7 @@ public class Calculator2 {
 
     private RealVector buildVector(int N, double intervalLength) {
         RealVector vectorL = new ArrayRealVector(N, 0);
-        double integral = 0;
+        double integral;
         for (int i = 0; i < N; i++) {
             integral = calculateIntegral2(N, intervalLength, i, i);
             vectorL.setEntry(i, -4*E(0) * e(N, intervalLength, i, 0) - 1000*integral);
@@ -78,7 +78,7 @@ public class Calculator2 {
         return vectorL;
     }
 
-    private RealVector solveEquation(RealMatrix matrixB, RealVector vectorL, int N) {
+    private RealVector solveEquation(RealMatrix matrixB, RealVector vectorL) {
         return new LUDecomposition(matrixB).getSolver().solve(vectorL);
     }
 

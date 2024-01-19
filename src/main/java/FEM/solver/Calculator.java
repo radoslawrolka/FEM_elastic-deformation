@@ -19,7 +19,7 @@ public class Calculator {
         double intervalLength = 2.0;
         RealMatrix matrixB = buildMatrix(N, intervalLength);
         RealVector vectorL = buildVector(N, intervalLength);
-        RealVector coefficients = solveEquation(matrixB, vectorL, N);
+        RealVector coefficients = solveEquation(matrixB, vectorL);
         double[] results = Arrays.copyOf(coefficients.toArray(), N + 1);
         for (int i = 0; i <= N; i++) {
             results[i] += 3;
@@ -61,7 +61,7 @@ public class Calculator {
         return vectorL;
     }
 
-    private RealVector solveEquation(RealMatrix matrixB, RealVector vectorL, int N) {
+    private RealVector solveEquation(RealMatrix matrixB, RealVector vectorL) {
         return new LUDecomposition(matrixB).getSolver().solve(vectorL);
     }
 
