@@ -32,7 +32,7 @@ public class Calculator {
         for (int n = 0; n < N; n++) {
             for (int m = 0; m < N; m++) {
                 double integral = calculateIntegral(N, intervalLength, n, m);
-                matrixB.setEntry(n, m, -E(0) * shapeFunction(N, intervalLength, n, 0) * shapeFunction(N, intervalLength, m, 0) + integral);
+                matrixB.setEntry(n, m, -E(0) * e(N, intervalLength, n, 0) * e(N, intervalLength, m, 0) + integral);
             }
         }
         return matrixB;
@@ -45,7 +45,7 @@ public class Calculator {
             double integralTo = intervalLength * Math.min(Math.min(n, m) + 1, N) / N;
             integral = calculusCalculator.integrate(
                     Integer.MAX_VALUE,
-                    x -> E(x) * derivativeOfShapeFunction(N, intervalLength, n, x) * derivativeOfShapeFunction(N, intervalLength, m, x),
+                    x -> E(x) * ePrim(N, intervalLength, n, x) * ePrim(N, intervalLength, m, x),
                     integralFrom,
                     integralTo
             );
@@ -55,7 +55,9 @@ public class Calculator {
 
     private RealVector buildVector(int N, double intervalLength) {
         RealVector vectorL = new ArrayRealVector(N, 0);
-        vectorL.setEntry(0, -7 * E(0) * shapeFunction(N, intervalLength, 0, 0));
+        for (int i = 0; i < N; i++) {
+            vectorL.setEntry(i, -7*E(0) * e(N, intervalLength, i, 0));
+        }
         return vectorL;
     }
 
@@ -67,7 +69,7 @@ public class Calculator {
         return x <= 1.0 ? 2.0 : 6.0;
     }
 
-    private static double shapeFunction(int N, double intervalLength, int i, double x) {
+    private static double e(int N, double intervalLength, int i, double x) {
         double h = intervalLength / N;
         double hInv = N / intervalLength;
         double center = intervalLength * i / N;
@@ -79,7 +81,7 @@ public class Calculator {
         return x <= center ? (x - left) * hInv : (right - x) * hInv;
     }
 
-    private static double derivativeOfShapeFunction(int N, double intervalLength, int i, double x) {
+    private static double ePrim(int N, double intervalLength, int i, double x) {
         double h = intervalLength / N;
         double hInv = N / intervalLength;
         double center = intervalLength * i / N;
